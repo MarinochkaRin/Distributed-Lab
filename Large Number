@@ -1,0 +1,26 @@
+from math import *
+import random
+import time
+
+def broodforce(krange: int, key: int):
+    start_time = time.time()
+    for k in range(krange):
+        if k == key:
+            print(f"Find key: {k}")
+            return round((time.time() - start_time) * 1000)
+
+
+if __name__ == "__main__":
+    ksizes = [2 ** x for x in range(int(log2(8)), int(log2(4096)) + 1)]
+
+    for ksize in ksizes:
+
+        krange = 2 ** ksize
+        print(f"Number of options {ksize}-key: {krange}")
+
+    for ksize in ksizes:
+
+        krange = 2 ** ksize
+        key = random.randint(0, krange - 1)
+        print(f"Random {ksize}-key: {key}")
+        print(f"Time: {broodforce(krange, key)} мс")
